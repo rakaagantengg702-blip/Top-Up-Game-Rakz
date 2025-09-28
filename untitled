@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up Game - Layanan Top Up Game Terpercaya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff3366;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-wa {
+            background: linear-gradient(to right, #25D366, #128C7E);
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .game-content {
+            padding: 20px;
+        }
+
+        .game-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .game-desc {
+            color: #bbb;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 50px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section p {
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .testimonial-section {
+            margin: 50px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .channel-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .channel-link:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <h1>TopUpGame</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#games">Game</a></li>
+                        <li><a href="#testimonial">Testimoni</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Top Up Game Mudah & Cepat</h2>
+            <p>Layanan top up game terpercaya dengan proses instan dan harga terjangkau. Dapatkan diamond, UC, crystal, dan item game lainnya dengan mudah!</p>
+            <a href="https://wa.me/6288293469919" class="btn btn-wa"><i class="fab fa-whatsapp"></i> Hubungi Kami</a>
+        </div>
+    </section>
+
+    <section id="games" class="games-section">
+        <div class="container">
+            <h2 class="section-title">Pilih Game Favorit Anda</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="https://autoresbot.com/tmp_files/f0ba5760-a4d0-40f9-a796-429add103b94.jpg" alt="Mobile Legends" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Mobile Legends</h3>
+                        <p class="game-desc">Top up Diamond ML dengan proses cepat dan aman. Tersedia berbagai paket diamond dengan harga terbaik.</p>
+                        <a href="https://wa.me/6288293469919?text=Halo,%20saya%20ingin%20top%20up%20Mobile%20Legends" class="btn">Top Up Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://autoresbot.com/tmp_files/b41a4959-b398-4e36-8f34-3af66e7ae4b5.jpg" alt="Free Fire" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Free Fire</h3>
+                        <p class="game-desc">Top up Diamond FF dengan proses instan. Dapatkan diamond untuk berbagai kebutuhan dalam game.</p>
+                        <a href="https://wa.me/6288293469919?text=Halo,%20saya%20ingin%20top%20up%20Free%20Fire" class="btn">Top Up Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://autoresbot.com/tmp_files/abf83605-e676-4270-83fb-406de7afcfa0.jpg" alt="PUBG Mobile" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">PUBG Mobile</h3>
+                        <p class="game-desc">Top up UC PUBG Mobile dengan harga terjangkau. Proses cepat dan aman tanpa ribet.</p>
+                        <a href="https://wa.me/6288293469919?text=Halo,%20saya%20ingin%20top%20up%20PUBG%20Mobile" class="btn">Top Up Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://autoresbot.com/tmp_files/c2275f41-6aa9-4472-a2e0-017b396f6d2f.jpg" alt="Genshin Impact" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Genshin Impact</h3>
+                        <p class="game-desc">Top up Crystal Genshin Impact dengan proses mudah. Tersedia berbagai paket crystal.</p>
+                        <a href="https://wa.me/6288293469919?text=Halo,%20saya%20ingin%20top%20up%20Genshin%20Impact" class="btn">Top Up Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://autoresbot.com/tmp_files/b0b0539d-0788-4c8f-8f8f-69881d1e2658.jpg" alt="Valorant" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Valorant</h3>
+                        <p class="game-desc">Top up Points Valorant dengan harga terbaik. Proses cepat dan aman untuk kebutuhan gaming Anda.</p>
+                        <a href="https://wa.me/6288293469919?text=Halo,%20saya%20ingin%20top%20up%20Valorant" class="btn">Top Up Sekarang</a>
+                    </div>
+                </div>
+                
+                <div class="game-card">
+                    <img src="https://autoresbot.com/tmp_files/c6760afc-a086-473a-88f7-6eafe469e493.jpg" alt="Call of Duty" class="game-img">
+                    <div class="game-content">
+                        <h3 class="game-title">Call of Duty</h3>
+                        <p class="game-desc">Top up CP Call of Duty dengan proses instan. Tersedia berbagai paket dengan harga terjangkau.</p>
+                        <a href="https://wa.me/6288293469919?text=Halo,%20saya%20ingin%20top%20up%20Call%20of%20Duty" class="btn">Top Up Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h3>Butuh Bantuan?</h3>
+            <p>Hubungi kami melalui WhatsApp untuk informasi lebih lanjut atau jika mengalami kendala dalam proses top up.</p>
+            <a href="https://wa.me/6288293469919" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp: 0882-9346-9919</a>
+        </div>
+    </section>
+
+    <section id="testimonial" class="testimonial-section">
+        <div class="container">
+            <h2 class="section-title">Testimoni Pelanggan</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Top up ML cepat banget, ga sampe 5 menit diamond langsung masuk. Recommended banget!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
+                        <div>
+                            <h4>Rizki Pratama</h4>
+                            <p>Pelanggan Mobile Legends</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Proses top up FF mudah dan harganya terjangkau. Seller ramah dan fast respon. Thanks!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
+                        <div>
+                            <h4>Sari Indah</h4>
+                            <p>Pelanggan Free Fire</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Top up UC PUBG lancar, ga pake ribet. Pasti akan order lagi next time. Terima kasih!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Customer">
+                        <div>
+                            <h4>Andi Wijaya</h4>
+                            <p>Pelanggan PUBG Mobile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="https://whatsapp.com/channel/0029Vb6INr7KbYMRXBwDv02x" class="channel-link">
+                <i class="fab fa-whatsapp"></i> Lihat Lebih Banyak Testimoni di Channel Kami
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <h1>TopUpGame</h1>
+                </div>
+                <p>Layanan Top Up Game Terpercaya dan Tercepat</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+                <p class="copyright">&copy; 2023 TopUpGame. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling untuk navigasi
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animasi saat scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.7)';
+            }
+        });
+    </script>
+</body>
+</html>
